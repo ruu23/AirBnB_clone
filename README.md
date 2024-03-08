@@ -34,5 +34,6 @@ console.py - the console contains the entry point of the command interpreter. Li
 * ``` def __str__(self) ``` - String representation of the BaseModel class
 * ``` def save(self) ``` - Updates the attribute updated_at with the current datetime
 * ``` def to_dict(self) ``` - returns a dictionary containing all keys/values of the instance
-#Authors
+  
+# Authors
   Arwa Mahmoud
