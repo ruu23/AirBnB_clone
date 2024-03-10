@@ -1,1 +1,1 @@
-{}
+{"User.ab06c558-f793-4c23-bf50-7be249f31fc7": {"id": "ab06c558-f793-4c23-bf50-7be249f31fc7", "created_at": "2024-03-11T00:54:34.548686", "update_at": "2024-03-11T00:54:34.548781", "first_name": "Betty", "last_name": "Bar", "email": "airbnb@mail.com", "password": "root", "__class__": "User"}, "User.06558382-6573-4e4b-abf7-77a04b94f80b": {"id": "06558382-6573-4e4b-abf7-77a04b94f80b", "created_at": "2024-03-11T00:54:34.550226", "update_at": "2024-03-11T00:54:34.550233", "first_name": "John", "email": "airbnb2@mail.com", "password": "root", "__class__": "User"}}

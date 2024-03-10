@@ -3,7 +3,8 @@
     Define class FileStorage
 '''
 import json
-import models
+from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -53,3 +54,8 @@ class FileStorage:
                 FileStorage.__objects[key] = class_name(**val)
         except FileNotFoundError:
             pass
+
+    CLASSES = {
+        'BaseModel': BaseModel,
+        'User': User
+    }
