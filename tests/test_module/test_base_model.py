@@ -1,34 +1,55 @@
 #!/usr/bin/python3
-"""
-"""
+
 import unittest
-from model.base_model import BaseModel
+from unittest.mock import patch
+from datetime import datetime
+from models.base_model import BaseModel
 
+class TestBaseModel(unittest.TestCase):
 
-class TestBasemodel(unittest.TestCase):
     def test_init(self):
-        my_model = BaseModel()
-        self.assertIsNotNone(my_model.id)
-        self.assertIsNotNone(my_model.created_at)
-        self.assertIsNotNone(my_model.updated_at)
+        instance = BaseModel()
+        self.assertIsNotNone(instance.id)
+        self.assertTrue(isinstance(instance.id, str))
+        self.assertTrue(isinstance(instance.created_at, datetime))
+        self.assertTrue(isinstance(instance.update_at, datetime))
+        self.assertAlmostEqual(instance.created_at.timestamp(), datetime.now().timestamp(), delta=1)
+        self.assertAlmostEqual(instance.update_at.timestamp(), datetime.now().timestamp(), delta=1)
 
     def test_save(self):
-        my_model = BaseModel()
-        initial_updated_at = my_model.updated_at
-        current_updated_at = my_model.save()
-        self.assertNotEqual(initial_update_at, current_updated_at)
+        instance = BaseModel()
+        old_updated_at = instance.update_at
+        instance.save()
+        self.assertNotEqual(old_updated_at, instance.update_at)
+        self.assertAlmostEqual(instance.update_at.timestamp(), datetime.now().timestamp(), delta=1)
 
     def test_to_dict(self):
-        my_model = BaseModel()
-        my_model_dict = my_model.to_dict()
-        self.assertIsInstance(my_model.to_dict, dict)
-        self.assertEqual(my_model_dict["__class__"], 'BaseModel')
-        self.assertEqual(my_model_dict['id'], my_model.id)
-        self.assertEqual(my_model_dict['created_at'], my_model.create_at.isformat)
-        self.assertEqual(my_model_dict['updated_at'], my_model.updated_at.isformat)
+        instance = BaseModel()
+        instance_dict = instance.to_dict()
 
-    def test_str(self):
-        my_model = BaseModel()
-        self.assertTrue(str(my_model).startswith('[BaseModel]'))
-        self.assertIn(my_model.id, str(my_model))
-        self.assertTrue(str(my_model.__dict__). str(my_model))
+        self.assertEqual(instance_dict['__class__'], 'BaseModel')
+        self.assertEqual(instance_dict['id'], instance.id)
+        self.assertTrue("created_at" in instance_dict)
+        self.assertTrue("update_at" in instance_dict)
+
+        try:
+            datetime.strptime(instance_dict["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            datetime.strptime(instance_dict["update_at"], "%Y-%m-%dT%H:%M:%S.%f")
+        except ValueError:
+            self.fail("Incorrect date format in to_dict output")
+
+    def test_str_method(self):
+        instance = BaseModel()
+        expected_str_format = "[BaseModel] ({}) {}".format(instance.id, instance.__dict__)
+        self.assertEqual(str(instance), expected_str_format)
+
+    @patch("models.base_model.datetime")
+    def test_mocked_time_in_init(self, mocked_datetime):
+        mocked_datetime.now.return_value = datetime(2020, 1, 1)
+        instance = BaseModel()
+        self.assertEqual(instance.created_at, datetime(2020, 1, 1))
+        self.assertEqual(instance.update_at, datetime(2020, 1, 1))
+
+if __name__ == '__main__':
+    unittest.main()
+
