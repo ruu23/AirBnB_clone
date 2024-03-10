@@ -1,4 +1,4 @@
-# models/user.py
+#!/usr/bin/python3
 
 from models.base_model import BaseModel
 
@@ -8,3 +8,6 @@ class User(BaseModel):
     password = ""
     first_name = ""
     last_name = ""
+
+    def __str__(self):
+        return super().__str__()
