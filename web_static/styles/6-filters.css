@@ -1,89 +1,84 @@
-.filters{
-  display: block;
-  background-color: white;
-  height: 70px;
-  width: 100%;
-  border: 1px solid #DDDDDD;
-  border-radius: 4px;
-  
+.filters {
+	display: block;
+	background-color: white;
+	height: 70px;
+	width: 100%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
 }
 
-.location{
-  height: 100%;
-  width: 25%;
+.locations {
+	display: inline;
+	vertical-align: middle;
+	float: left;
+	height: 100%;
+	width: 25%;
 
-  border-right: solid #DDDDDD 1px;
-  margin-left: 45px;
-  line-height: 20px;
-
-  display: inline;
-  vertical-align: middle;
-  float: left;
+	line-height: 20px;
+	border-right: 1px solid #DDDDDD;
 }
 
-.popover{
-  background-color: #FAFAFA;
-  display: none;
-  width: 100%;
-  list-style-type: none;
+.amenities {
+	display: inline;
+	vertical-align: middle;
+	height: 100%;
+	float: left;
+    width: 25%;
 
-  margin-left: -1px;
-  margin-top: 8px;
-  padding: 25px 0px;
-
-  border: solid #DDDDDD 1px;
-  border-radius: 4px;
-  
+	line-height: 20px;
 }
 
-.location:hover .popover {
-  display: inline-block;
+.popover {
+	list-style-type: none;
+	display: none;
+	background-color: #FAFAFA;
+	width: 100%;
+
+	margin-left: -1px;
+	margin-top: 8px;
+	padding: 25px 0px;
+
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
 }
 
-.amenities:hover .popover {
-  display: inline-block;
-}
-ul{
-  list-style-type: none;
-  padding: 0px;
-  padding-bottom: 20px;
+.locations:hover .popover {
+	display: inline-block;
 }
 
-.amenities{
-  height: 100%;
-  width: 25%;
-
-  float: left;
-  line-height: 20px;
-
-  display: inline;
-  vertical-align: middle;
+.filter_amenities:hover .popover {
+	display: inline-block;
 }
 
-h2{
-  font-size: 16px;
-  padding-left: 30px;
-  margin: 0px;
+ul {
+	list-style-type: none;
+	padding: 0px;
+	padding-bottom: 20px;
 }
 
-h3{
-  font-weight: 600;
-  margin-top: 12px;
-  margin-bottom: 5px;
-  padding-left: 45px;
+h2 {
+	font-size: 16px;
+	padding-left: 30px;
+	margin: 0px;
 }
 
-h4{
-  font-weight: 400;
-  font-size: 14px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-left: 45px;
+h3 {
+	font-weight: 600;
+	margin-top: 12px;
+	margin-bottom: 5px;	
+	padding-left: 45px;
 }
 
+h4 {
+	font-size: 14px;
+	font-weight: 400;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 45px;
+}
 
-button{
-  color: #FFFFFF;
+button {
+	color: #FFFFFF;
 	font-size: 18px;
 	
 	height: 48px;
@@ -98,6 +93,6 @@ button{
 	margin-right: 30px;
 }
 
-.button:hover {
-  opacity: 90%;
+button:hover {
+	opacity: 90%;
 }
